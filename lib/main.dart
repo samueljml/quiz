@@ -14,6 +14,7 @@ class QuizApp extends StatelessWidget {
       home: Scaffold(
         appBar: AppBar(
           title: const Text("Quiz"),
+          centerTitle: true,
         ),
         body: const Text("Olá Flutter!!!"),
       ),
