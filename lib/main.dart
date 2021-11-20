@@ -8,6 +8,10 @@ main() => runApp(QuizApp(
 class QuizApp extends StatelessWidget {
   const QuizApp({Key? key}) : super(key: key);
 
+  void answer() {
+    print("Question answered!");
+  }
+
   @override
   Widget build(BuildContext context) {
     final questions = [
@@ -25,19 +29,19 @@ class QuizApp extends StatelessWidget {
           Text(questions[0]),
           const ElevatedButton(
             child: Text("Resposta 1"),
-            onPressed: null,
+            onPressed: answer,
           ),
           const ElevatedButton(
             child: Text("Resposta 2"),
-            onPressed: null,
+            onPressed: answer,
           ),
           const ElevatedButton(
             child: Text("Resposta 3"),
-            onPressed: null,
+            onPressed: answer,
           ),
           const ElevatedButton(
             child: Text("Resposta 4"),
-            onPressed: null,
+            onPressed: answer,
           ),
         ]),
       ),
