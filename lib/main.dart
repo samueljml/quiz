@@ -10,8 +10,13 @@ class QuizApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Text("Hello Flutter!!!"),
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text("Quiz"),
+        ),
+        body: const Text("Olá Flutter!!!"),
+      ),
     );
   }
 }
