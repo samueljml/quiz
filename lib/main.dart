@@ -1,15 +1,15 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-main() => runApp(QuizApp(
-      key: UniqueKey(),
-    ));
+main() => runApp(QuizApp());
 
-class QuizApp extends StatelessWidget {
-  const QuizApp({Key? key}) : super(key: key);
+class QuizAppState extends State<QuizApp> {
+  var selectedQuestions = 0;
 
-  void answer() {
-    print("Question answered!");
+  void responder() {
+    setState(() {
+      selectedQuestions++;
+      print(selectedQuestions);
+    });
   }
 
   @override
@@ -25,26 +25,30 @@ class QuizApp extends StatelessWidget {
           title: const Text("Quiz"),
           centerTitle: true,
         ),
-        body: Column(children: [
-          Text(questions[0]),
-          const ElevatedButton(
-            child: Text("Resposta 1"),
-            onPressed: answer,
-          ),
-          const ElevatedButton(
-            child: Text("Resposta 2"),
-            onPressed: answer,
-          ),
-          const ElevatedButton(
-            child: Text("Resposta 3"),
-            onPressed: answer,
-          ),
-          const ElevatedButton(
-            child: Text("Resposta 4"),
-            onPressed: answer,
-          ),
-        ]),
+        body: Column(
+          children: <Widget>[
+            Text(questions[selectedQuestions]),
+            ElevatedButton(
+              child: const Text('Resposta 1'),
+              onPressed: responder,
+            ),
+            ElevatedButton(
+              child: const Text('Resposta 2'),
+              onPressed: responder,
+            ),
+            ElevatedButton(
+              child: const Text('Resposta 3'),
+              onPressed: responder,
+            ),
+          ],
+        ),
       ),
     );
+  }
+}
+
+class QuizApp extends StatefulWidget {
+  QuizAppState createState() {
+    return QuizAppState();
   }
 }
