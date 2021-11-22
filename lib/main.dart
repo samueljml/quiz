@@ -7,19 +7,25 @@ main() => runApp(QuizApp(
     ));
 
 class QuizAppState extends State<QuizApp> {
-  var selectedQuestions = 0;
+  var _selectedQuestions = 0;
 
   void _answer() {
     setState(() {
-      selectedQuestions++;
+      _selectedQuestions++;
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    final questions = [
-      "What is your favority color?",
-      "What is your favotiry pet?"
+    final List<Map<String, Object>> questions = [
+      {
+        "text": "What is your favority color?",
+        "answer": ["Black", "Red", "Green", "White"]
+      },
+      {
+        "text": "What is your favotiry pet?",
+        "answer": ["Rabbit", "Elefant", "Cat", "Dog"],
+      }
     ];
 
     return MaterialApp(
@@ -30,7 +36,7 @@ class QuizAppState extends State<QuizApp> {
         ),
         body: Column(
           children: <Widget>[
-            Question(questions[selectedQuestions]),
+            Question(questions[_selectedQuestions]["text"].toString()),
             Answer('Resposta 1', _answer),
             Answer('Resposta 2', _answer),
             Answer('Resposta 3', _answer),
