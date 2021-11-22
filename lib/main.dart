@@ -9,26 +9,34 @@ main() => runApp(QuizApp(
 class QuizAppState extends State<QuizApp> {
   var _selectedQuestion = 0;
 
+  final List<Map<String, Object>> _questions = [
+    {
+      "text": "What is your favority color?",
+      "answer": ["Black", "Red", "Green", "White"]
+    },
+    {
+      "text": "What is your favotiry pet?",
+      "answer": ["Rabbit", "Elefant", "Cat", "Dog"],
+    }
+  ];
+
   void _answer() {
-    setState(() {
-      _selectedQuestion++;
-    });
+    if (hasSelectedQuestion) {
+      setState(() {
+        _selectedQuestion++;
+      });
+    }
+  }
+
+  bool get hasSelectedQuestion {
+    return _selectedQuestion < _questions.length;
   }
 
   @override
   Widget build(BuildContext context) {
-    const List<Map<String, Object>> questions = [
-      {
-        "text": "What is your favority color?",
-        "answer": ["Black", "Red", "Green", "White"]
-      },
-      {
-        "text": "What is your favotiry pet?",
-        "answer": ["Rabbit", "Elefant", "Cat", "Dog"],
-      }
-    ];
-
-    List<String> answers = questions[_selectedQuestion].cast()["answer"];
+    List<String> answers = hasSelectedQuestion
+        ? _questions[_selectedQuestion].cast()["answer"]
+        : [];
 
     return MaterialApp(
       home: Scaffold(
@@ -36,12 +44,14 @@ class QuizAppState extends State<QuizApp> {
           title: const Text("Quiz"),
           centerTitle: true,
         ),
-        body: Column(
-          children: <Widget>[
-            Question(questions[_selectedQuestion]["text"].toString()),
-            ...answers.map((t) => Answer(t, _answer)).toList()
-          ],
-        ),
+        body: hasSelectedQuestion
+            ? Column(
+                children: <Widget>[
+                  Question(_questions[_selectedQuestion]["text"].toString()),
+                  ...answers.map((t) => Answer(t, _answer)).toList()
+                ],
+              )
+            : null,
       ),
     );
   }
