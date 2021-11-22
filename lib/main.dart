@@ -11,7 +11,6 @@ class QuizAppState extends State<QuizApp> {
   void responder() {
     setState(() {
       selectedQuestions++;
-      print(selectedQuestions);
     });
   }
 
