@@ -17,7 +17,7 @@ class QuizAppState extends State<QuizApp> {
 
   @override
   Widget build(BuildContext context) {
-    final List<Map<String, Object>> questions = [
+    const List<Map<String, Object>> questions = [
       {
         "text": "What is your favority color?",
         "answer": ["Black", "Red", "Green", "White"]
