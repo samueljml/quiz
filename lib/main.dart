@@ -9,7 +9,7 @@ main() => runApp(QuizApp(
 class QuizAppState extends State<QuizApp> {
   var selectedQuestions = 0;
 
-  void responder() {
+  void _answer() {
     setState(() {
       selectedQuestions++;
     });
@@ -31,9 +31,9 @@ class QuizAppState extends State<QuizApp> {
         body: Column(
           children: <Widget>[
             Question(questions[selectedQuestions]),
-            Answer('Resposta 1'),
-            Answer('Resposta 2'),
-            Answer('Resposta 3'),
+            Answer('Resposta 1', _answer),
+            Answer('Resposta 2', _answer),
+            Answer('Resposta 3', _answer),
           ],
         ),
       ),
