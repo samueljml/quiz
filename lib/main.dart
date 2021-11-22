@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 main() => runApp(QuizApp());
 
-class QuizAppState extends State<QuizApp> {
+class _QuizAppState extends State<QuizApp> {
   var selectedQuestions = 0;
 
   void responder() {
@@ -48,7 +48,7 @@ class QuizAppState extends State<QuizApp> {
 }
 
 class QuizApp extends StatefulWidget {
-  QuizAppState createState() {
-    return QuizAppState();
+  _QuizAppState createState() {
+    return _QuizAppState();
   }
 }
