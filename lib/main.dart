@@ -7,11 +7,11 @@ main() => runApp(QuizApp(
     ));
 
 class QuizAppState extends State<QuizApp> {
-  var _selectedQuestions = 0;
+  var _selectedQuestion = 0;
 
   void _answer() {
     setState(() {
-      _selectedQuestions++;
+      _selectedQuestion++;
     });
   }
 
@@ -28,6 +28,8 @@ class QuizAppState extends State<QuizApp> {
       }
     ];
 
+    List<String> answers = questions[_selectedQuestion].cast()["answer"];
+
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
@@ -36,10 +38,8 @@ class QuizAppState extends State<QuizApp> {
         ),
         body: Column(
           children: <Widget>[
-            Question(questions[_selectedQuestions]["text"].toString()),
-            Answer('Resposta 1', _answer),
-            Answer('Resposta 2', _answer),
-            Answer('Resposta 3', _answer),
+            Question(questions[_selectedQuestion]["text"].toString()),
+            ...answers.map((t) => Answer(t, _answer)).toList()
           ],
         ),
       ),
