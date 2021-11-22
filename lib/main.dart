@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import "./question.dart";
 
-main() => runApp(QuizApp());
+main() => runApp(QuizApp(
+      key: UniqueKey(),
+    ));
 
-class _QuizAppState extends State<QuizApp> {
+class QuizAppState extends State<QuizApp> {
   var selectedQuestions = 0;
 
   void responder() {
@@ -27,7 +30,7 @@ class _QuizAppState extends State<QuizApp> {
         ),
         body: Column(
           children: <Widget>[
-            Text(questions[selectedQuestions]),
+            Question(questions[selectedQuestions]),
             ElevatedButton(
               child: const Text('Resposta 1'),
               onPressed: responder,
@@ -48,7 +51,10 @@ class _QuizAppState extends State<QuizApp> {
 }
 
 class QuizApp extends StatefulWidget {
-  _QuizAppState createState() {
-    return _QuizAppState();
+  const QuizApp({Key? key}) : super(key: key);
+
+  @override
+  QuizAppState createState() {
+    return QuizAppState();
   }
 }
