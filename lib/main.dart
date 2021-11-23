@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import "./question.dart";
-import './answer.dart';
+import 'package:project_quiz/quiz.dart';
+
 import './result.dart';
 
 main() => runApp(QuizApp(
@@ -21,6 +21,10 @@ class QuizAppState extends State<QuizApp> {
     }
   ];
 
+  bool get hasSelectedQuestion {
+    return _selectedQuestion < _questions.length;
+  }
+
   void _answer() {
     if (hasSelectedQuestion) {
       setState(() {
@@ -29,16 +33,8 @@ class QuizAppState extends State<QuizApp> {
     }
   }
 
-  bool get hasSelectedQuestion {
-    return _selectedQuestion < _questions.length;
-  }
-
   @override
   Widget build(BuildContext context) {
-    List<String> answers = hasSelectedQuestion
-        ? _questions[_selectedQuestion].cast()["answer"]
-        : [];
-
     return MaterialApp(
       home: Scaffold(
           appBar: AppBar(
@@ -46,11 +42,10 @@ class QuizAppState extends State<QuizApp> {
             centerTitle: true,
           ),
           body: hasSelectedQuestion
-              ? Column(
-                  children: <Widget>[
-                    Question(_questions[_selectedQuestion]["text"].toString()),
-                    ...answers.map((t) => Answer(t, _answer)).toList()
-                  ],
+              ? Quiz(
+                  selected: _selectedQuestion,
+                  questions: _questions,
+                  answer: _answer,
                 )
               : const Result()),
     );
