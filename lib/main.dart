@@ -13,11 +13,21 @@ class QuizAppState extends State<QuizApp> {
   final List<Map<String, Object>> _questions = [
     {
       "text": "What is your favority color?",
-      "answer": ["Black", "Red", "Green", "White"]
+      "answer": [
+        {"text": "Black", "points": 10},
+        {"text": "Red", "points": 3},
+        {"text": "Green", "points": 1},
+        {"text": "White", "points": 0}
+      ]
     },
     {
       "text": "What is your favotiry pet?",
-      "answer": ["Rabbit", "Elefant", "Cat", "Dog"],
+      "answer": [
+        {"text": "Rabbit", "points": 10},
+        {"text": "Elefant", "points": 5},
+        {"text": "Cat", "points": 3},
+        {"text": "Dog", "points": 1}
+      ],
     }
   ];
 
