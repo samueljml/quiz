@@ -59,7 +59,7 @@ class QuizAppState extends State<QuizApp> {
                   questions: _questions,
                   answer: _answer,
                 )
-              : const Result()),
+              : Result(_score)),
     );
   }
 }
