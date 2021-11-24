@@ -9,6 +9,7 @@ main() => runApp(QuizApp(
 
 class QuizAppState extends State<QuizApp> {
   var _selectedQuestion = 0;
+  var _score = 0;
 
   final List<Map<String, Object>> _questions = [
     {
@@ -35,10 +36,11 @@ class QuizAppState extends State<QuizApp> {
     return _selectedQuestion < _questions.length;
   }
 
-  void _answer() {
+  void _answer(int points) {
     if (hasSelectedQuestion) {
       setState(() {
         _selectedQuestion++;
+        _score += points;
       });
     }
   }
