@@ -10,13 +10,16 @@ class Answer extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       width: double.infinity,
-      child: ElevatedButton(
-        style: ElevatedButton.styleFrom(primary: Colors.blue),
-        child: Text(
-          text,
-          style: const TextStyle(color: Colors.white),
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
+        child: ElevatedButton(
+          style: ElevatedButton.styleFrom(primary: Colors.blue),
+          child: Text(
+            text,
+            style: const TextStyle(color: Colors.white),
+          ),
+          onPressed: onSelection,
         ),
-        onPressed: onSelection,
       ),
     );
   }
